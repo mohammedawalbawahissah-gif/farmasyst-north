@@ -25,6 +25,7 @@ import SubmitReport            from './pages/monitoring/SubmitReport';
 
 import InvestorDashboard     from './pages/investor/Dashboard';
 import BrowseFarmers         from './pages/investor/Farmers';
+import InvestorFarmerProfile from './pages/investor/FarmerProfile';
 import Portfolio             from './pages/investor/Portfolio';
 import Contracts             from './pages/investor/Contracts';
 import Opportunities         from './pages/investor/Opportunities';
@@ -111,6 +112,7 @@ function AppRoutes() {
         <Route path="/investor/opportunities"  element={<Opportunities />} />
         <Route path="/investor/projects"       element={<ProjectApplications />} />
         <Route path="/investor/farmers"        element={<BrowseFarmers />} />
+        <Route path="/investor/farmers/:id"    element={<InvestorFarmerProfile />} />
         <Route path="/investor/portfolio"      element={<Portfolio />} />
         <Route path="/investor/contracts"      element={<Contracts />} />
         <Route path="/investor/diligence"      element={<DueDiligence />} />

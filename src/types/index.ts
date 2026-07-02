@@ -1,6 +1,6 @@
 // ── Enums / unions ────────────────────────────────────────────────────────────
 export type UserRole = 'farmer' | 'investor' | 'consumer' | 'admin' | 'monitoring_officer' | 'vet' | 'input_dealer';
-export type CreditType = 'funding' | 'inputs' | 'training';
+export type CreditType = 'direct_financing' | 'farm_inputs' | 'structured_training' | 'mixed';
 export type FlockType = 'broilers' | 'layers' | 'mixed';
 
 // ── Pagination wrapper ────────────────────────────────────────────────────────

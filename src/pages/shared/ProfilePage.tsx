@@ -386,7 +386,12 @@ export default function ProfilePage() {
               </div>
               <Field label="Preferred credit types">
                 <div style={{ display: 'flex', gap: 'var(--sp-sm)', flexWrap: 'wrap', marginTop: 4 }}>
-                  {(['funding','inputs','training'] as const).map(t => {
+                  {([
+                    { value: 'direct_financing',    label: 'Direct Financing' },
+                    { value: 'farm_inputs',         label: 'Farm Inputs' },
+                    { value: 'structured_training', label: 'Structured Training' },
+                    { value: 'mixed',               label: 'Mixed' },
+                  ] as const).map(({ value: t, label }) => {
                     const selected = (rp.preferred_credit_types ?? []).includes(t);
                     return (
                       <label key={t} style={{ display: 'flex', alignItems: 'center', gap: 6, cursor: 'pointer',
@@ -398,7 +403,7 @@ export default function ProfilePage() {
                             const cur: string[] = rp.preferred_credit_types ?? [];
                             setRp('preferred_credit_types', selected ? cur.filter(x => x !== t) : [...cur, t]);
                           }} />
-                        {t.charAt(0).toUpperCase() + t.slice(1)}
+                        {label}
                       </label>
                     );
                   })}

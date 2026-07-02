@@ -52,7 +52,7 @@ export default function CreditApplication() {
         ...(farmId && { farm: farmId }),
         ...(amount && { amount_requested: String(parseFloat(amount)) }),
         ...(months && { repayment_period_months: parseInt(months) }),
-        ...(creditType === 'inputs' && { input_details: inputDetails }),
+        ...(creditType === 'farm_inputs' && { input_details: inputDetails }),
       };
       let app;
       if (draftId) {

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toArray } from '../../lib/api';
 import { PageHeader, Card, Button, Badge } from '../../components/ui';
 import { useAsync } from '../../lib/hooks/useAsync';
@@ -13,6 +14,7 @@ const FLOCK_TYPES = ['', 'broilers', 'layers', 'mixed', 'day_old_chicks', 'hatch
 const REGIONS = ['', 'Northern Region', 'Upper East Region', 'Upper West Region', 'Savannah Region'];
 
 export default function BrowseFarmers() {
+  const navigate = useNavigate();
   const [search,       setSearch]  = useState('');
   const [flockFilter,  setFlock]   = useState('');
   const [regionFilter, setRegion]  = useState('');
@@ -186,7 +188,12 @@ export default function BrowseFarmers() {
               )}
             </div>
 
-            <Button style={{ width: '100%', marginTop: 'var(--sp-lg)' }} onClick={() => setSelected(null)}>Close</Button>
+            <div style={{ display: 'flex', gap: 'var(--sp-sm)', marginTop: 'var(--sp-lg)' }}>
+              <Button variant="secondary" style={{ flex: 1 }} onClick={() => setSelected(null)}>Close</Button>
+              <Button style={{ flex: 1 }} onClick={() => navigate(`/investor/farmers/${selected.p.id}`)}>
+                View complete profile
+              </Button>
+            </div>
           </div>
         </div>
       )}
