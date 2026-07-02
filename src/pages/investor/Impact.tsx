@@ -38,14 +38,15 @@ export default function ImpactReports() {
         <div>
           <SectionTitle>Credit by Type</SectionTitle>
           <Card>
-            {(['funding','inputs','training'] as const).map(type => {
+            {(['direct_financing','farm_inputs','structured_training','mixed'] as const).map(type => {
               const typeAgs = ags.filter(a=>a.credit_type===type);
               const typeAmt = typeAgs.reduce((s,a)=>s+parseFloat(a.amount),0);
               const pct     = totalDisbursed > 0 ? Math.round((typeAmt/totalDisbursed)*100) : 0;
+              const typeLabel = type.replace(/_/g,' ');
               return (
                 <div key={type} style={{marginBottom:'var(--sp-md)'}}>
                   <div style={{display:'flex',justifyContent:'space-between',fontSize:13,marginBottom:4}}>
-                    <span style={{textTransform:'capitalize'}}>{type}</span>
+                    <span style={{textTransform:'capitalize'}}>{typeLabel}</span>
                     <span>{typeAgs.length} agreements · GHS {typeAmt.toLocaleString()} ({pct}%)</span>
                   </div>
                   <div style={{background:'var(--col-border)',borderRadius:4,height:8}}>
